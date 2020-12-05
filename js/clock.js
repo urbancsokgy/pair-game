@@ -47,28 +47,30 @@ cardsOnPage.forEach(element => {
 //#endregion 
 //#region 
 function eventHandler(event){
+    // event.classList.add('turn');
     if(clockStart==0){ clock(0); clockStart++;}
     if (counter==0){
         console.log('firstclick');
-    firstClick=event;
-    name1=event.dataset.name;
-    console.log(name1);
-    event.src=`${cards[name1]}`;
-    counter++;
-}else{    
-    secondClick=event;    
-    name2=event.dataset.name;
-    event.src=`${cards[name2]}`;
-    counter=0;
-    evaluation(name1,name2,firstClick,secondClick);
-}    
+        firstClick=event;
+        name1=event.dataset.name;
+        console.log(name1);
+        event.src=`${cards[name1]}`;
+       // event.classList.remove('turn');
+        counter++;
+    }else{    
+        secondClick=event;    
+        name2=event.dataset.name;
+        event.src=`${cards[name2]}`;
+        counter=0;
+        evaluation(name1,name2,firstClick,secondClick);
+    }    
 }
 //#endregion 
 //#region értékelés az 1. és 2. kattintás elementjéval és a kártyák nevével
 function evaluation(name1,name2,firstClick,secondClick){
     console.log('értékelés',name1,name2,firstClick,secondClick);
-if(name1!=name2){
-    setTimeout(()=>{
+    if(name1!=name2){
+        setTimeout(()=>{
         firstClick.src="./img/back.png";
         secondClick.src="./img/back.png";},1000)
 }

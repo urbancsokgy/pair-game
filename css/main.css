@@ -25,9 +25,9 @@ header{
     text-transform: uppercase;
     color: white;
     text-align: center;
-    -webkit-text-fill-color: rgb(40, 19, 163); /* Will override color (regardless of order) */
+    -webkit-text-fill-color: rgb(78, 142, 216); /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-color: rgb(76, 55, 194);
     text-shadow: 0 0 5px  rgba(0, 0, 0, .5 );
 }
 .wrapper{
@@ -53,9 +53,17 @@ header{
 .card img{
     z-index: 0;
     border-radius: 20px;
-    max-width: 99%;    
-    transition: all ,2;
+    max-width: 99%;
+    transform: skew(0deg);
+    scale: 1 1;    
+    
 }
+.card img:active {
+    /* transform: scale(0.57); */
+    transform :skewx(20deg );
+    scale: 0 1;
+    transition: all 1s;
+   }
 .turn{
     scale: 0 1;
     transform :skewx(20deg );

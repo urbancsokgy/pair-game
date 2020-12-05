@@ -43,13 +43,8 @@ cardsOnPage.forEach(element => {
         element.addEventListener('click', event=>{
          e=event.target;  eventHandler(e);  })
 });
-//#region 
-//#endregion lap animáció
-const turn=(event)=>{
-    event.classList.add('turn');
-    console.log('turn');
-};
 //#endregion 
+
 //#region 
 function eventHandler(event){
     console.log(event);
