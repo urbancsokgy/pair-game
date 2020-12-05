@@ -5,7 +5,7 @@
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
-     
+     user-drag: none;
     
     
 }
@@ -53,11 +53,6 @@ header{
 .card img{
     z-index: 0;
     border-radius: 20px;
-    max-width: 99%;    
-    transition: all ,2;
-}
-.turn{
-    scale: 0 1;
-    transform :skewx(20deg );
-       
+    max-width: 99%;
+    
 }

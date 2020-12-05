@@ -1,3 +1,4 @@
+
 const arrIndex=[0,1, 2, 3, 4, 5, 6, 7, 8, 9];
 const cards1=['cat','puppy','frog','bird','monkey','cat','puppy','frog','bird','monkey'];
 const cards={
@@ -41,28 +42,23 @@ document.body.onload=onload(arrIndex);
 const cardsOnPage=document.querySelectorAll('.card');
 cardsOnPage.forEach(element => {    
         element.addEventListener('click', event=>{
-         e=event.target;  eventHandler(e);  })
+         e=event.target; console.log(e); eventHandler(e);  })
 });
-//#region 
-//#endregion lap animáció
-const turn=(event)=>{
-    event.classList.add('turn');
-    console.log('turn');
-};
 //#endregion 
 //#region 
 function eventHandler(event){
-    console.log(event);
     if(clockStart==0){ clock(0); clockStart++;}
     if (counter==0){
-        firstClick=event;
-        name1=event.dataset.name;
-        event.src=`${cards[name1]}`;
-       counter++;
-    }else{    
-        secondClick=event;    
-        name2=event.dataset.name;
-        event.src=`${cards[name2]}`;
+        console.log('firstclick');
+    firstClick=event;
+    name1=event.dataset.name;
+    console.log(name1);
+    event.src=`${cards[name1]}`;
+    counter++;
+}else{    
+    secondClick=event;    
+    name2=event.dataset.name;
+    event.src=`${cards[name2]}`;
     counter=0;
     evaluation(name1,name2,firstClick,secondClick);
 }    
@@ -97,6 +93,8 @@ let clock=(counter)=>{
     
 
     
+//#endregion
+//#region 
 //#endregion
 //#region 
 //#region 
