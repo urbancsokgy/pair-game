@@ -2,12 +2,12 @@ const arrIndex=[0,1, 2, 3, 4, 5, 6, 7, 8, 9];
 const cards1=['cat','puppy','frog','bird','monkey','cat','puppy','frog','bird','monkey'];
 const cards={
 'cat': './img/cat.png' ,
-'puppy': '../img/puppy.png' ,
+'puppy': './img/puppy.png' ,
 'frog': './img/frog.jpg' ,
 'bird': './img/bird.png' ,
 'monkey': './img/monkey.jpg' ,
 'cat': './img/cat.png' ,
-'puppy': '../img/puppy.png' ,
+'puppy': './img/puppy.png' ,
 'frog': './img/frog.jpg' ,
 'bird': './img/bird.png' ,
 'monkey': './img/monkey.jpg' ,
@@ -59,12 +59,12 @@ function eventHandler(event){
         name2=event.dataset.name;
         event.src=`${cards[name2]}`;
     counter=0;
-    evaluation(name1,name2,firstClick,secondClick);
+    evaluation(name1,name2,firstClick,secondClick,event);
 }    
 }
 //#endregion 
 //#region értékelés az 1. és 2. kattintás elementjéval és a kártyák nevével
-function evaluation(name1,name2,firstClick,secondClick){
+function evaluation(name1,name2,firstClick,secondClick,event){
     console.log('értékelés',name1,name2,firstClick,secondClick);
 if(name1!=name2){
     setTimeout(()=>{
@@ -72,6 +72,7 @@ if(name1!=name2){
         secondClick.src="./img/back.png";},1000)
 }
     (name1==name2)?pairs++:'';
+    (pairs==cards1.length/2)?cardArea.innerHTML+=' <div class="won"><h1>you won</h1></div> ':'';
     (pairs==cards1.length/2)?setTimeout(()=>{location.reload(); },5000):'';
 }
 //#endregion
