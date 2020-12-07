@@ -38,40 +38,48 @@ function onload(arr){
 document.body.onload=onload(arrIndex);
 //#endregion 
 //#region Eseményfigyelők hozzáadása
-const cardsOnPage=document.querySelectorAll('.card');
+const cardsOnPage=document.querySelectorAll('.card img');
 cardsOnPage.forEach(element => {    
-        element.addEventListener('click', event=>{
-         e=event.target;  eventHandler(e);  })
+        element.addEventListener('click', eventHandler,true )
 });
 //#endregion 
 
 //#region 
-function eventHandler(event){
-    console.log(event);
+function eventHandler(){
+    console.log(this);
+    //this.removeEventListener('click', eventHandler,true )
     if(clockStart==0){ clock(0); clockStart++;}
     if (counter==0){
-        firstClick=event;
-        name1=event.dataset.name;
-        event.src=`${cards[name1]}`;
+        firstClick=this;
+        name1=this.dataset.name;
+        this.src=`${cards[name1]}`;
        counter++;
-    }else{    
-        secondClick=event;    
-        name2=event.dataset.name;
-        event.src=`${cards[name2]}`;
+    }else if(firstClick!=this){    
+        secondClick=this;    
+        name2=this.dataset.name;
+        this.src=`${cards[name2]}`;
     counter=0;
-    evaluation(name1,name2,firstClick,secondClick,event);
-}    
+    evaluation(name1,name2,firstClick,secondClick,this);
+  
+    } 
 }
 //#endregion 
 //#region értékelés az 1. és 2. kattintás elementjéval és a kártyák nevével
 function evaluation(name1,name2,firstClick,secondClick,event){
     console.log('értékelés',name1,name2,firstClick,secondClick);
-if(name1!=name2){
+if(name1!=name2 ){
     setTimeout(()=>{
         firstClick.src="./img/back.png";
         secondClick.src="./img/back.png";},1000)
 }
-    (name1==name2)?pairs++:'';
+    // ha 
+    if(name1==name2&& !(firstClick===secondClick)){
+        pairs++;
+        firstClick.removeEventListener('click', eventHandler,true );
+        secondClick.removeEventListener('click', eventHandler,true );
+    }
+    (firstClick===secondClick)?console.log('true'):console.log('false');
+  
     (pairs==cards1.length/2)?cardArea.innerHTML+=' <div class="won"><h1>you won</h1></div> ':'';
     (pairs==cards1.length/2)?setTimeout(()=>{location.reload(); },5000):'';
 }
