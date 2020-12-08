@@ -60,6 +60,7 @@ font-size: 5rem;
     margin: 10px;
     border: 1px solid rgb(42, 42, 56);
     box-shadow: 0 0 5px 5px  rgba(48, 33, 131, 0.2);
+    scale: 1 1;    
 }
 .card img{
     z-index: 0;
@@ -70,11 +71,14 @@ font-size: 5rem;
     
 }
 .card img:active {
-    transition: all 1s;
+    transition: all .3s ease-in-out;
     transform :skewx(20deg );
     scale: 0 1;
-   }
+}
 .turn{
+    transition: all .3s ease-in-out;
+    transform :skewx(20deg );
+    scale: 0 1;
     scale: 0 1;
     transform :skewx(20deg );
        

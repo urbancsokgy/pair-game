@@ -65,10 +65,15 @@ function eventHandler(){
 }
 //#endregion 
 //#region értékelés az 1. és 2. kattintás elementjéval és a kártyák nevével
+let blockClikcs=false;
 function evaluation(name1,name2,firstClick,secondClick,event){
+    if(blockClikcs){return}
     console.log('értékelés',name1,name2,firstClick,secondClick);
 if(name1!=name2 ){
-    setTimeout(()=>{
+    let blockClikcs=false;
+    const to=setTimeout(()=>{
+        clearTimeout(to);
+        blockClikcs=false;
         firstClick.src="./img/back.png";
         secondClick.src="./img/back.png";},1000)
 }
